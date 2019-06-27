@@ -6,7 +6,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-
+/*
+ * 어노테이션을 활용한 서블릿
+ */
 @WebServlet("/third")
 public class ThirdServlet extends HttpServlet {
     @Override
