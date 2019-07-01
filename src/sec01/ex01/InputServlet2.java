@@ -7,7 +7,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.Enumeration;
-
+/*
+ * 어노테이션을 활용한 서블릿
+ */
 @WebServlet("/input2")
 public class InputServlet2 extends HttpServlet {
     @Override
