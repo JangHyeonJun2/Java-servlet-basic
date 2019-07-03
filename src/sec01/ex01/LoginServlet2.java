@@ -17,9 +17,9 @@ public class LoginServlet2 extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        req.setCharacterEncoding("utf-8");
-        resp.setContentType("text/html;charset=utf-8");
-        PrintWriter out = resp.getWriter();
+        req.setCharacterEncoding("utf-8"); //웹 브라우저에서 전송된 데이터의 인코딩을 설정합니다.
+        resp.setContentType("text/html;charset=utf-8"); //setContentType()을 이용해 응답할 데이터 종류가 HTML임을 설정한다.
+        PrintWriter out = resp.getWriter(); //HttpServletResponse 객체의 getWriter()를 이용해 출력 스트림 PrintWriter 객체를 받아 옵니다.
         String id = req.getParameter("user_id");
         String pw = req.getParameter("user_pw");
 
