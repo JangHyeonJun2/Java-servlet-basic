@@ -16,10 +16,10 @@ public class CalcServlet extends HttpServlet {
         resp.setContentType("text/html;charset=utf-8");
         PrintWriter out = resp.getWriter();
         String command = req.getParameter("command");//수행할 요청을 받아 옵니다.
-        String won = req.getParameter("won");
-        String operator = req.getParameter("operator");
+        String won = req.getParameter("won"); //변화할 원화를 받아 옵니다.
+        String operator = req.getParameter("operator"); //환할 외화 종류를 받아 옵니다.
 
-        if(command != null && command.equals("calculate")){
+        if(command != null && command.equals("calculate")){ //최초 요청시 command가 null이면 계산기 화면을 출력하고, command값이 calculate이면 계산 결과를 출력한다.
             String result = calculate(Float.parseFloat(won),operator);
             out.print("<html><font size=10>변환결과</font><br>");
             out.print("<html><font size =10>"+ result +"</font><br>");
@@ -38,7 +38,7 @@ public class CalcServlet extends HttpServlet {
         out.print("<option value='pound'>파운드</option>");
         out.print("<option value='euro'>유로</option>");
         out.print("</select>");
-        out.print("<input type='hidden' name='command' value='calculate'/>");
+        out.print("<input type='hidden' name='command' value='calculate'/>"); //<hidden>태그를 이용하여 계산기에서 서블릿으로 수행할 요청을 전달합니다.
         out.println("<input type='submit' value='변환'/>");
         out.println("</form>");
         out.print("</html>");
