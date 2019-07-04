@@ -109,4 +109,61 @@ form
 | Enumeration getParameterNames()          | name값을 모를 때 사용합니다.                                 |
 
 
+# 6-2 서블릿의 응답 처리 방법
 
+### 서블릿에서 응답을 처리하는 방법
+
+- doGet()이나 doPost() 메서드 안에서 처리합니다
+- javax.servlet.http.HttpServletResponse 객체를 이용합니다
+- setContentType()을 이용해 클라이언트에게 전송할 데이터 종류(MIME-TYPE)를 지정합니다.
+- 클라이언트(웹 브라우저)와 서블릿의 통신은 자바I/O의 스트립을 이용합니다.
+
+**서블릿의 응답 처리는 doGet()이나 doPost() 메서드의 두 번째 매개변수인 HttpServletResponse객체를 이용하여 처리합니다.그리고 웹 브라우저와 서블릿의 응답 과정은 자바I/O의 기능인 스트림을 이용하여 이루어집니다.**
+
+------
+
+### MIME-TYPE
+
+우리가 배우는 웹 애플리케이션은 클라이언트에 해당하는 웹 브라우저와 서버에 해당하는 서블릿이 서로 데이터를 주고받으면서 실행합니다. 웹 브라우저가 네트워크를 통해 서블릿에 데이터를 보내는 경우 서블릿은 네트워크로부터 데이터를 입력 받습니다. 반대로 서블릿이 웹 브라우저로 데이터를 전송하는 경우에는 네트워크로 데이터를 출력합니다.  
+
+서버(서블릿)에서 웹 브라우저로 데이터를 전송할 때는 어떤 종류의 데이터를 전송하는지 웹 브라우저에 알려줘야 합니다. 그 이유는 웹 브라우저가 전송 받을 데이터의 종류를 미리 알고 있으면 더빠르게 처리할 수 있기 때문이다. 따라서 서버(서블릿)에서 웹 브라우저로 데이터를 전송할 때 는 톰캣 컨테이너에서 미리 제공하는 여러가지 전송 데이터 종류 중 하나를 지정해서 웹 브라우저로 전송합니다. 이처럼 톰캣 컨테이너에서 미리 설정해 놓은 데이터 종류들을 MIME-TYPE이라고 합니다.
+
+#### MIME-TYPE으로 지정하는 예
+
+- HTML로 전송 시 : text/html
+- 일반 텍스트로 전송 시 : text/plain
+- XML 데이터로 전송 시 :  application/xml
+
+웹 브라우저는 기본적으로 HTML만 인식하므로 서블릿에서 전송하는 대부분의 데이터는 MIME-TYPE을 text/html로 지정한다.
+
+##### 서블릿이 클라이언트(웹 브라우저)에 응답하는 과정은 다음과 같습니다
+
+1.setContentType()을 이용하여 MIME-TYPE을 지정합니다.
+
+2.데이터를 출력할 PrintWriter 객체를 생성합니다.
+
+3.출력 데이터를 HTML형식으로 만듭니다.
+
+4.PrintWriter의 print()나 println()을 이용해 데이터를 출력합니다.
+
+**아래 예시**
+
+```
+@Override
+protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+    req.setCharacterEncoding("utf-8"); //웹 브라우저에서 전송된 데이터의 인코딩을 설정합니다.
+    resp.setContentType("text/html;charset=utf-8");  //1번 setContentType()을 이용해 응답할 데이터 종류가 HTML임을 설정한다.
+    PrintWriter out = resp.getWriter(); //2번 HttpServletResponse 객체의 getWriter()를 이용해 출력 스트림 PrintWriter 객체를 받아 옵니다.
+    String id = req.getParameter("user_id");
+    String pw = req.getParameter("user_pw");
+
+    String data = "<html>"; //3번
+    data += "<body>";
+    data += "아이디 : " + id;
+    data += "<br>";
+    data += "패스워드 :"+ pw;
+    data += "</body>";
+    data += "</html>";
+    out.print(data); //4번
+}
+```
