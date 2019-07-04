@@ -7,7 +7,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.io.PrintWriter;
-
+/*
+ * doGet()메소드에 Html문서 작업하기
+ */
 @WebServlet("/login2")
 public class LoginServlet2 extends HttpServlet {
     @Override
