@@ -6,7 +6,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-
+/*
+ * web/loing.html에서 method 방식을 get,post 어떤걸 정하는냐에 따라 doGet,doPost메서드가 둘중에 하나가 호출된다.
+ */
 @WebServlet("/login4")
 public class LoginServlet4 extends HttpServlet {
     @Override
