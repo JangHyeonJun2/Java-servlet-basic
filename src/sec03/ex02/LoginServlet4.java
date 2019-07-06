@@ -12,7 +12,7 @@ import java.io.IOException;
 @WebServlet("/login4")
 public class LoginServlet4 extends HttpServlet {
     @Override
-    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException { //login.html에서 method 가 GET이면 호출
         System.out.println("doGet method");
         doHandle(req,resp);//Get 방식으로 요청시 다시 doHandle()을 호출합니다.
     }
