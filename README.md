@@ -208,3 +208,106 @@ protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws Se
 ![스크린샷 2019-07-05 오후 10.37.11](/Users/janghyeonjun/Desktop/스크린샷 2019-07-05 오후 10.37.11.png)
 
 웹 브라우저에서 전송되는 데이터는 TCP/IP의 헤더에 숨겨진 채 전송되므로 브라우저의 주송창을 보면 URL뒤에는 아무것도 표시되지 않습니다.
+
+---------
+
+# 6.4 자바스크립트로 서블릿에  요청하기
+
+웹 사이트에 로그인 할 때 ID나 비밀번호를 입력하지 않고 로그인 하면 오류 메시지가 출력된다.<form> 태그에서 바로 서블릿으로 데이터를 전송했지만 전송 전에 로그인하면 ID와 비밀번호 입력 유무 체크하기처럼 전송 데이터에 대해 유효성 검사를 하는 경우가 있다. 이런 기능은 자바스크립트로 구현하므로 이번에는 자바스크립트로 서블릿에 요청하는 방법을 배운다!
+
+**pro05/Web/login2.html**
+
+```html
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <script type="text/javascript">
+        function fn_validate() {
+            var frmLogin = document.frmLogin;
+            var user_id = frmLogin.user_id.value;
+            var user_pw = frmLogin.user_pw.value;
+
+            if((user_id.length == 0 || user_id == "") || (user_pw.length == 0 || user_pw == "")){
+                alert("아이디와 비밀번호는 필수입니다.")
+            }else {
+                frmLogin.method = "post";
+                frmLogin.action = "login5";
+                frmLogin.submit();
+            }
+        }
+    </script>
+    <title>자바스크립트 구현(로그인 창)</title>
+</head>
+<body>
+    <form name="frmLogin" method="post" action="login" enctype="UTF-8">
+        아이디: <input type="text" name="user_id"><br>
+        비밀번호:<input type="password" name="user_pw"><br>
+        <input type="button" onclick="fn_validate()" value="로그인">
+        <input type="reset" value="다시 입력">
+        <input type="hidden" name="user_address" value="서울시 성북구"/>
+    </form>
+</body>
+</html>
+```
+
+**pro05/sec03/ex03/LoginServlet5.java**
+
+```java
+package sec03.ex03;
+
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import java.io.IOException;
+import java.io.PrintWriter;
+
+@WebServlet("/login5")
+public class LoginServlet5 extends HttpServlet {
+    @Override
+    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        req.setCharacterEncoding("utf-8");
+        resp.setContentType("text/html;charset=utf-8");
+        PrintWriter out = resp.getWriter();
+        String id = req.getParameter("user_id");
+        String pw = req.getParameter("user_pw");
+        String address = req.getParameter("user_address"); // login2.html에서 hidden값으로 전송된 값을 받아 옵니다.
+        System.out.println("id : "+ id);
+        System.out.println("password : "+pw);
+
+        String data = "<html>";
+        data+="<body>";
+        data+="id : " +id;
+        data+="<br>";
+        data+="password : "+pw;
+        data+="<br>";
+        data+="address : "+address;
+        data+="</body>";
+        data+="</html>";
+        out.print(data);
+    }
+
+    @Override
+    public void destroy() {
+        System.out.println("destroy method");
+    }
+
+    @Override
+    public void init() throws ServletException {
+        System.out.println("init method");
+    }
+}
+
+```
+
+##### 결과
+
+**ID와 비밀번호를 입력하지 않고 로그인을 클릭하면 오류 창이 나타납니다.**
+
+
+
+![스크린샷 2019-07-07 오후 2.36.26](/Users/janghyeonjun/Desktop/스크린샷 2019-07-07 오후 2.36.26.png)
+
+![스크린샷 2019-07-07 오후 2.36.48](/Users/janghyeonjun/Desktop/스크린샷 2019-07-07 오후 2.36.48.png)
