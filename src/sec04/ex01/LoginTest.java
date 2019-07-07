@@ -8,7 +8,7 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.io.PrintWriter;
 /*
- * 실습예제1: 서블릿에 로그인 요청 시 유효성 검사하기
+ * 실습예제1.2: 서블릿에 로그인 요청 시 유효성 검사하기 & 서블릿으로 로그인 요청 시 관리자 화면 나타내기
  */
 @WebServlet("/loginTest")
 public class LoginTest extends HttpServlet {
