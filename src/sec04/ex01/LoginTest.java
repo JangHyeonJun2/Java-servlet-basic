@@ -23,16 +23,27 @@ public class LoginTest extends HttpServlet {
         System.out.println("id : "+ id);
         System.out.println("password : "+pw);
 
-        if(id!=null && (id.length()!=0)){
-            out.print("<html>");
-            out.print("<body>");
-            out.print(id+"님이 로그인 하셨습니다.");
-            out.print("</body>");
-            out.print("</html>");
+        if((id!=null && (id.length()!=0)) && (pw!=null && pw.length()!=0)){
+            if(id.equals("admin")){
+                out.print("<html>");
+                out.print("<body>");
+                out.print("<font size='12'>관리자님이 로그인 하셨습니다.</font>");
+                out.print("<br>");
+                out.print("<input type=button value='회원정보 수정하기'/>");
+                out.print("<input type=button value='회원정보 삭제하기'/>");
+                out.print("</body>");
+                out.print("</html>");
+            }else {
+                out.print("<html>");
+                out.print("<body>");
+                out.print(id+"님이 로그인 하셨습니다.");
+                out.print("</body>");
+                out.print("</html>");
+            }
         }else{
             out.print("<html>");
             out.print("<body>");
-            out.print("아이디를 입력하세요!!!");
+            out.print("아이디나 비밀번호를 입력하세요!!!");
             out.print("<br>");
             out.print("<a href='http://localhost:8090/test01/login.html'>로그인 창으로 이동</a>");
             out.print("</body>");
