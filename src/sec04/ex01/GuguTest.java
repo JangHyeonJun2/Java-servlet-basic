@@ -21,7 +21,11 @@ public class GuguTest extends HttpServlet {
         out.print("<td colspan=2>"+dan+" 단 출력 </td>");
         out.print("</td>");
         for(int i=1;i<10;i++){
-            out.print("<tr align=center>");
+            if(i % 2 == 0){
+                out.print("<tr align=center bgcolor='#ACFA58'>");
+            }else {
+                out.print("<tr align=center bgcolor='#81BEF7'>");
+            }
             out.print("<td width=400>");
             out.print(dan+ "* "+i);
             out.print("</td>");
