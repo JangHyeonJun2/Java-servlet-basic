@@ -26,6 +26,12 @@ public class GuguTest extends HttpServlet {
             }else {
                 out.print("<tr align=center bgcolor='#81BEF7'>");
             }
+            out.print("<td width=200>");
+            out.print("<input type='radio'/>"+i);
+            out.print("</td>");
+            out.print("<td width=200>");
+            out.print("<input type='checkbox'/>"+i);
+            out.print("</td>");
             out.print("<td width=400>");
             out.print(dan+ "* "+i);
             out.print("</td>");
