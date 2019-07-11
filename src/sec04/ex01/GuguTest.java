@@ -7,7 +7,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.io.PrintWriter;
-
+/*
+ * 구구단 테스트 예제!
+ */
 @WebServlet("/guguTest")
 public class GuguTest extends HttpServlet {
     @Override
