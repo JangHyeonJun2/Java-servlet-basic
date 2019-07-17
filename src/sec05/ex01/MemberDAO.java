@@ -3,7 +3,9 @@ package sec05.ex01;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
-
+/*
+ * DB에 저장된 멤버들 표시하기!!!
+ */
 public class MemberDAO {
     public List listMembers(){
         List list = new ArrayList();

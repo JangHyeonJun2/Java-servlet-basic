@@ -6,17 +6,7 @@
     </artifacts-to-build>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3a649b17-be98-4b88-994e-1d8c93e2134e" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/mysql_connector_java_5_1_47_bin.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/artifacts/pro05_war_exploded.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/artifacts/pro05_war_exploded.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/pro05_war_exploded/WEB-INF/classes/sec04/ex01/GuguTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/pro05_war_exploded/WEB-INF/classes/sec04/ex01/GuguTest.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/pro05/sec04/ex01/GuguTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/pro05/sec04/ex01/GuguTest.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pro05.iml" beforeDir="false" afterPath="$PROJECT_DIR$/pro05.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sec05/ex01/MemberDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sec05/ex01/MemberDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sec05/ex01/MemberServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sec05/ex01/MemberServlet.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sec05/ex01/MemberVO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sec05/ex01/MemberVO.java" afterDir="false" />
-    </list>
+    <list default="true" id="3a649b17-be98-4b88-994e-1d8c93e2134e" name="Default Changelist" comment="" />
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -53,8 +43,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/sec05/ex01/MemberDAO.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="105">
-              <caret line="7" selection-start-line="7" selection-end-line="7" />
+            <state relative-caret-position="300">
+              <caret line="20" column="49" lean-forward="true" selection-start-line="20" selection-start-column="49" selection-end-line="20" selection-end-column="49" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -178,12 +168,6 @@
               <item name="pro05" type="b2602c69:ProjectViewProjectNode" />
               <item name="pro05" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="pro05" type="b2602c69:ProjectViewProjectNode" />
-              <item name="pro05" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="ex01" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="pro05" type="b2602c69:ProjectViewProjectNode" />
@@ -423,18 +407,17 @@
       <workItem from="1563000024340" duration="27000" />
       <workItem from="1563000074687" duration="3221000" />
       <workItem from="1563082991333" duration="3390000" />
-      <workItem from="1563280804566" duration="5056000" />
+      <workItem from="1563280804566" duration="5807000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="33805000" />
+    <option name="totallyTimeSpent" value="34556000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1680" height="1027" extended-state="0" />
-    <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.3009768" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.3009768" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Designer" order="2" />
       <window_info id="Image Layers" order="3" />
@@ -444,7 +427,7 @@
       <window_info id="Web" order="7" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.32941177" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.32941177" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -724,8 +707,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/sec05/ex01/MemberDAO.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="105">
-          <caret line="7" selection-start-line="7" selection-end-line="7" />
+        <state relative-caret-position="300">
+          <caret line="20" column="49" lean-forward="true" selection-start-line="20" selection-start-column="49" selection-end-line="20" selection-end-column="49" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
