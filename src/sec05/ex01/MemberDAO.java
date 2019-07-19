@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.List;
 /*
  * DB에 저장된 멤버들 표시하기!!!
+ * 싱글톤으로 만들기!!!
  */
 public class MemberDAO {
     public List listMembers(){
