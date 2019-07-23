@@ -1,12 +1,30 @@
 package sec06.ex01;
 
-import sec06.ex01.MemberVO;
 
+import javax.naming.Context;
+import javax.naming.InitialContext;
+import javax.naming.NamingException;
+import javax.sql.DataSource;
+import javax.xml.crypto.Data;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
+
 public class MemberDAO {
+    private DataSource dataFactory;
+
+    Context ctx;
+
+    {
+        try {
+            ctx = new InitialContext();
+            Context envContext = (Context)ctx.lookup("java:/comp/env");
+            dataFactory = (DataSource)envContext.lookup("jdbc/mysql");
+        } catch (NamingException e) {
+            e.printStackTrace();
+        }
+    }
 
     public List listmembers(){
         List list = new ArrayList();
@@ -16,7 +34,7 @@ public class MemberDAO {
         String sql = "select * from t_member";
 
         try{
-            conn = connDB(); //데이터베이스 연결 메서드
+            conn = dataFactory.getConnection(); //데이터베이스 연결 메서드
             pstmt = conn.prepareStatement(sql);
             rs = pstmt.executeQuery();
 
@@ -59,6 +77,7 @@ public class MemberDAO {
         }
         return list;
     }
+    /*
     private Connection connDB(){
         Connection conn = null;
 
@@ -83,4 +102,6 @@ public class MemberDAO {
         }
         return conn;
     }
+    */
+
 }

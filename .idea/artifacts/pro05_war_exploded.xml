@@ -10,6 +10,7 @@
         <element id="directory" name="lib">
           <element id="library" level="project" name="JAX-WS-Apache Axis" />
           <element id="library" level="project" name="mysql-connector-java-5.1.47-bin" />
+          <element id="library" level="project" name="tomcat-dbcp-7.0.30" />
         </element>
       </element>
     </root>
