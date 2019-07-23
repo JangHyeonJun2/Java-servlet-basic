@@ -1,4 +1,4 @@
-package sec05.ex01;
+package sec06.ex01;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -10,14 +10,14 @@ import java.io.PrintWriter;
 import java.sql.Date;
 import java.util.List;
 
-//@WebServlet("/member")
+@WebServlet("/member")
 public class MemberServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         resp.setContentType("text/html;charset=utf-8");
         PrintWriter out = resp.getWriter();
         MemberDAO dao = new MemberDAO(); //SQL문으로 조회할 MemberDAO객체를 생성합니다.
-        List list = dao.listMembers(); //listMembers() 메서드로 회원 정보를 조회합니다.
+        List list = dao.listmembers(); //listMembers() 메서드로 회원 정보를 조회합니다.
 
         out.print("<html><body>");
         out.print("<table border=1><tr align='center' bgcolor='lightgreen'>");
