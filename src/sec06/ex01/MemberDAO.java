@@ -9,20 +9,23 @@ import javax.xml.crypto.Data;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
-
+/*
+ * DataSource를 이용한 DB접속
+ */
 
 public class MemberDAO {
     private DataSource dataFactory;
+    public MemberDAO(){
+        Context ctx;
 
-    Context ctx;
-
-    {
-        try {
-            ctx = new InitialContext();
-            Context envContext = (Context)ctx.lookup("java:/comp/env");
-            dataFactory = (DataSource)envContext.lookup("jdbc/mysql");
-        } catch (NamingException e) {
-            e.printStackTrace();
+        {
+            try {
+                ctx = new InitialContext();
+                Context envContext = (Context)ctx.lookup("java:/comp/env");
+                dataFactory = (DataSource)envContext.lookup("jdbc/mysql");
+            } catch (NamingException e) {
+                e.printStackTrace();
+            }
         }
     }
 
