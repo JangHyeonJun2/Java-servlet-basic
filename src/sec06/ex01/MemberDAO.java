@@ -11,7 +11,7 @@ import java.util.ArrayList;
 import java.util.List;
 /*
  * DataSource를 이용한 DB접속
- * 주석
+ * 주석2
  */
 
 public class MemberDAO {
@@ -22,7 +22,7 @@ public class MemberDAO {
         {
             try {
                 ctx = new InitialContext();
-                Context envContext = (Context)ctx.lookup("java:/comp/env");
+                Context envContext = (Context)ctx.lookup("java:/comp/env"); //이거 뭔지 다시 확인하기 
                 dataFactory = (DataSource)envContext.lookup("jdbc/mysql");
             } catch (NamingException e) {
                 e.printStackTrace();
