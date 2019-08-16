@@ -80,6 +80,34 @@ public class MemberDAO {
         }
         return list;
     }
+    public void addMember(MemberVO memberVO){
+        Connection conn = null;
+        PreparedStatement pstmt = null;
+        try{
+            conn = dataFactory.getConnection();
+
+            String id = memberVO.getId();
+            String pwd = memberVO.getPwd();
+            String name = memberVO.getName();
+            String email = memberVO.getEmail();
+
+            String query = "insert into t_member";
+            query+= "(id,pwd,name,email)";
+            query+= "values(?,?,?,?)";
+            System.out.println("prepareStatement: " + query);
+            pstmt = conn.prepareStatement(query);
+            pstmt.setString(1,id);
+            pstmt.setString(2,pwd);
+            pstmt.setString(3,name);
+            pstmt.setString(4,email);
+            pstmt.executeUpdate();
+
+            pstmt.close();
+
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+    }
     /*
     private Connection connDB(){
         Connection conn = null;
