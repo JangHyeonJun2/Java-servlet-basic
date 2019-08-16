@@ -84,14 +84,14 @@ public class MemberDAO {
         Connection conn = null;
         PreparedStatement pstmt = null;
         try{
-            conn = dataFactory.getConnection();
+            conn = dataFactory.getConnection();//DataSource를 이용해 데이터베이스와 연결한다.
 
             String id = memberVO.getId();
             String pwd = memberVO.getPwd();
             String name = memberVO.getName();
             String email = memberVO.getEmail();
 
-            String query = "insert into t_member";
+            String query = "insert into t_member";//insert문을 문자열로 맘듭니다.
             query+= "(id,pwd,name,email)";
             query+= "values(?,?,?,?)";
             System.out.println("prepareStatement: " + query);
@@ -100,7 +100,7 @@ public class MemberDAO {
             pstmt.setString(2,pwd);
             pstmt.setString(3,name);
             pstmt.setString(4,email);
-            pstmt.executeUpdate();
+            pstmt.executeUpdate();//회원 정보를 테이블에 추가합니다.
 
             pstmt.close();
 
