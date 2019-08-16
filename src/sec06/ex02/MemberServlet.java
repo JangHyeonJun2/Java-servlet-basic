@@ -26,9 +26,10 @@ public class MemberServlet extends HttpServlet {
         resp.setContentType("text/html;charset=utf-8");
         MemberDAO dao = new MemberDAO();
         PrintWriter out = resp.getWriter();
-        String command = req.getParameter("command");
+        String command = req.getParameter("command");//memberForm.html에서 command을 받아온다.
 
-        if(command != null && command.equals("addMember")){
+        if(command != null && command.equals("addMember")){//회원 가입창에서 전송된 command가 addMember이면 전송된 값들을 받아온다.
+            //아래는 회원 가입창에서 전송된 값들을 얻어 와 MemberVO객체에 저장한 후 SQL문을 이용해 전달합니다.
             String _id = req.getParameter("id");
             String _pwd = req.getParameter("pwd");
             String _name = req.getParameter("name");
@@ -61,6 +62,6 @@ public class MemberServlet extends HttpServlet {
                     "<a href='/member3?command=delMember&id=" +id+"'>삭제 </a></td></tr>");
         }
         out.print("</table></body></html>");
-        out.print("<a href='/memberForm.html'>새 회원 가입하기</a>");
+        out.print("<a href='/memberForm.html'>새 회원 가입하기</a>");//클릭하면 다시 회원 가입창으로 이동합니다.
     }
 }
