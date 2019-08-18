@@ -108,6 +108,31 @@ public class MemberDAO {
             e.printStackTrace();
         }
     }
+
+    public void delMember(String id){
+        Connection conn = null;
+        PreparedStatement pstmt = null;
+
+        try{
+            conn = dataFactory.getConnection();
+            //Statement stmt = conn.createStatement();
+
+            String query = "delete from t_member"+" where id=?";
+            System.out.println("prepareStatement: "+query);
+            pstmt = conn.prepareStatement(query);
+            pstmt.setString(1,id);
+            pstmt.executeUpdate();
+        }catch (Exception ex){
+            ex.printStackTrace();
+        }finally {
+            try {
+                pstmt.close();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        }
+    }
+
     /*
     private Connection connDB(){
         Connection conn = null;
