@@ -117,7 +117,7 @@ public class MemberDAO {
             conn = dataFactory.getConnection();
             //Statement stmt = conn.createStatement();
 
-            String query = "delete from t_member"+" where id=?";
+            String query = "delete from t_member"+" where id=?";//delete 쿼리문을 문자열로 만든다.단,where앞에 공백 필수!!
             System.out.println("prepareStatement: "+query);
             pstmt = conn.prepareStatement(query);
             pstmt.setString(1,id);

@@ -59,7 +59,7 @@ public class MemberServlet extends HttpServlet {
             Date joinDate = memberVO.getJoinDate();
 
             out.print("<tr><td>"+id+"</td><td>"+pwd+"</td><td>"+name+"</td><td>"+email+"</td><td>"+joinDate+"</td><td>"+
-                    "<a href='/member3?command=delMember&id=" +id+"'>삭제 </a></td></tr>");
+                    "<a href='/member3?command=delMember&id=" +id+"'>삭제 </a></td></tr>");//삭제를 클릭하면 command값과 회원 ID를 서블릿으로 전송합니다.
         }
         out.print("</table></body></html>");
         out.print("<a href='/memberForm.html'>새 회원 가입하기</a>");//클릭하면 다시 회원 가입창으로 이동합니다.
