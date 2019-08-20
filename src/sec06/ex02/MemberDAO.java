@@ -10,7 +10,7 @@ import java.util.ArrayList;
 import java.util.List;
 /*
  * DataSource를 이용한 DB접속
- * 주석2
+ * JPA로 바꿔보기
  */
 
 public class MemberDAO {
