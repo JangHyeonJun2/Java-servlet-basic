@@ -7,8 +7,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="3a649b17-be98-4b88-994e-1d8c93e2134e" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/src/sec07/ex1/FirstServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sec07/ex1/FirstServlet.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sec07/ex1/SecondServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sec07/ex1/SecondServlet.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/sec07/ex2/FirstServlet.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/sec07/ex2/SecondServlet.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -22,11 +23,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/sec07/ex1/FirstServlet.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="240">
-              <caret line="16" column="34" selection-start-line="16" selection-start-column="34" selection-end-line="16" selection-end-column="34" />
+              <caret line="16" column="96" selection-start-line="16" selection-start-column="96" selection-end-line="16" selection-end-column="96" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -37,8 +38,32 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/sec07/ex1/SecondServlet.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="150">
-              <caret line="10" column="21" selection-start-line="10" selection-start-column="21" selection-end-line="10" selection-end-column="21" />
+            <state relative-caret-position="315">
+              <caret line="21" lean-forward="true" selection-start-line="21" selection-end-line="21" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/sec07/ex2/FirstServlet.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="240">
+              <caret line="16" column="92" selection-start-line="16" selection-start-column="92" selection-end-line="16" selection-end-column="92" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/sec07/ex2/SecondServlet.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="270">
+              <caret line="18" column="36" lean-forward="true" selection-start-line="18" selection-start-column="36" selection-end-line="18" selection-end-column="36" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -92,8 +117,10 @@
         <option value="$PROJECT_DIR$/src/sec06/ex01/MemberServlet.java" />
         <option value="$PROJECT_DIR$/src/sec06/ex02/MemberServlet.java" />
         <option value="$PROJECT_DIR$/src/sec06/ex02/MemberDAO.java" />
-        <option value="$PROJECT_DIR$/src/sec07/ex1/SecondServlet.java" />
         <option value="$PROJECT_DIR$/src/sec07/ex1/FirstServlet.java" />
+        <option value="$PROJECT_DIR$/src/sec07/ex1/SecondServlet.java" />
+        <option value="$PROJECT_DIR$/src/sec07/ex2/SecondServlet.java" />
+        <option value="$PROJECT_DIR$/src/sec07/ex2/FirstServlet.java" />
       </list>
     </option>
   </component>
@@ -133,7 +160,14 @@
               <item name="pro05" type="b2602c69:ProjectViewProjectNode" />
               <item name="pro05" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="ex1" type="462c0819:PsiDirectoryNode" />
+              <item name="sec07" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="pro05" type="b2602c69:ProjectViewProjectNode" />
+              <item name="pro05" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="sec07" type="462c0819:PsiDirectoryNode" />
+              <item name="ex2" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="pro05" type="b2602c69:ProjectViewProjectNode" />
@@ -379,12 +413,12 @@
       <workItem from="1565959804322" duration="7162000" />
       <workItem from="1566137040036" duration="2257000" />
       <workItem from="1566311940768" duration="194000" />
-      <workItem from="1566381861049" duration="937000" />
+      <workItem from="1566381861049" duration="1587000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="53035000" />
+    <option name="totallyTimeSpent" value="53685000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1680" height="1027" extended-state="0" />
@@ -753,20 +787,40 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/sec07/ex1/SecondServlet.java">
+    <entry file="file://$PROJECT_DIR$/src/sec07/ex1/FirstServlet.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="150">
-          <caret line="10" column="21" selection-start-line="10" selection-start-column="21" selection-end-line="10" selection-end-column="21" />
+        <state relative-caret-position="240">
+          <caret line="16" column="96" selection-start-line="16" selection-start-column="96" selection-end-line="16" selection-end-column="96" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/sec07/ex1/FirstServlet.java">
+    <entry file="file://$PROJECT_DIR$/src/sec07/ex1/SecondServlet.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="315">
+          <caret line="21" lean-forward="true" selection-start-line="21" selection-end-line="21" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/sec07/ex2/SecondServlet.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="270">
+          <caret line="18" column="36" lean-forward="true" selection-start-line="18" selection-start-column="36" selection-end-line="18" selection-end-column="36" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/sec07/ex2/FirstServlet.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="240">
-          <caret line="16" column="34" selection-start-line="16" selection-start-column="34" selection-end-line="16" selection-end-column="34" />
+          <caret line="16" column="92" selection-start-line="16" selection-start-column="92" selection-end-line="16" selection-end-column="92" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
