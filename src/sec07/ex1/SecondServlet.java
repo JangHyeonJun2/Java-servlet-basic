@@ -15,7 +15,7 @@ public class SecondServlet extends HttpServlet {
         resp.setContentType("text/html;charset=utf-8");
         PrintWriter out = resp.getWriter();
         out.print("<html><body>");
-        out.print("sendRedirect를 이용한 redirect 실습입니다.");
+        out.print("sendRedirect를 이용한 redirect 실습입니다.");//브라우저로 출력합니다.
         out.print("</body></html>");
     }
 }
