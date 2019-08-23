@@ -14,6 +14,7 @@ public class FirstServlet extends HttpServlet {
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         resp.setContentType("text/html;charset=utf-8");
         PrintWriter out = resp.getWriter();
-        resp.sendRedirect("second1"); // sendRedirect()메서드를 이용해 웹 브라우저에게 다른 서불릿인 second로 재요청합니다.
+        resp.sendRedirect("second1?name=lee"); // sendRedirect()메서드를 이용해 웹 브라우저에게 다른 서불릿인 second로 재요청합니다.또한
+                                                    //GET방식을 이용해 이름/값 쌍으로 데이터를 다른 서블릿으로 전달합니다.
     }
 }

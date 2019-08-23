@@ -14,7 +14,9 @@ public class SecondServlet extends HttpServlet {
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         resp.setContentType("text/html;charset=utf-8");
         PrintWriter out = resp.getWriter();
+        String name = req.getParameter("name");
         out.print("<html><body>");
+        out.print("이름:"+name+"<br>");
         out.print("sendRedirect를 이용한 redirect 실습입니다.");//브라우저로 출력합니다.
         out.print("</body></html>");
     }
