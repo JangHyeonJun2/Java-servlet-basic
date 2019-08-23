@@ -14,6 +14,9 @@ public class FirstServlet extends HttpServlet {
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         resp.setContentType("text/html;charset=utf-8");
         PrintWriter out = resp.getWriter();
+        /*
+         *  밑에 코드는 자바스크립트 location의 href 속성에 서블릿second를 설정해 재요청합니다.
+         */
         out.print("<script type = 'text/javascript'>");
         out.print("location.href='second3'");
         out.print("</script>");
