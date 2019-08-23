@@ -15,7 +15,9 @@ public class SecondServlet extends HttpServlet {
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         resp.setContentType("text/html;charset=utf-8");
         PrintWriter out = resp.getWriter();
+        String name = req.getParameter("name");
         out.print("<html><body>");
+        out.print("name="+name+"<br>");
         out.print("dispatch를 이용한 forward 실습입니다.");
         out.print("</body></html>");
     }

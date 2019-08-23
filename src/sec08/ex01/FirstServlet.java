@@ -16,7 +16,7 @@ public class FirstServlet extends HttpServlet {
         /*
          * dispatch 방법을 이용해 second로 전달합니다.
          */
-        RequestDispatcher dispatcher = req.getRequestDispatcher("second4");
+        RequestDispatcher dispatcher = req.getRequestDispatcher("second4?name=jang");
         dispatcher.forward(req,resp);
     }
 }
