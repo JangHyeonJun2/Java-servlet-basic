@@ -15,7 +15,8 @@ public class SecondServlet extends HttpServlet {
         req.setCharacterEncoding("utf-8");
         resp.setContentType("text/html;charset=utf-8");
         PrintWriter out = resp.getWriter();
-        String address = (String)req.getAttribute("address");
+        String address = (String)req.getAttribute("address");//전달되 request에서 getAttribute()를 이용해 address의 값을 가져온다.
+                                                                //그리고 getAttribute()값은 반환값이 Object이므로 형변환 필수!!!!
         out.print("<html><body>");
         out.print("주소:"+address);
         out.print("<br>");
