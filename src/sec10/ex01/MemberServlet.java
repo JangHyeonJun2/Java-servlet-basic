@@ -28,7 +28,10 @@ public class MemberServlet extends HttpServlet {
         MemberDAO dao = new MemberDAO();
 
         List memberList = dao.listmembers();
-        req.setAttribute("membersList",memberList);
+        req.setAttribute("membersList",memberList);//조회된 회원 정보를 ArrayList 객체에 저장한 후 request에 바인딩합니다.
+        /*
+         * 바인딩한 request를 viewMembers 서블릿으로 포워딩합니다.
+         */
         RequestDispatcher dispatch = req.getRequestDispatcher("viewMembers");
         dispatch.forward(req,resp);
 

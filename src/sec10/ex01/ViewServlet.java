@@ -17,7 +17,7 @@ public class ViewServlet extends HttpServlet {
         req.setCharacterEncoding("utf-8");
         resp.setContentType("text/html;charset=utf-8");
         PrintWriter out = resp.getWriter();
-        List membersList = (List)req.getAttribute("membersList");
+        List membersList = (List)req.getAttribute("membersList");//MemberServlet.java에서 바인딩해서 넝어온 request에서 회원정보를 가져옵니다.
         out.print("<html><body>");
         out.print("<table border=1><tr align='center' bgcolor='lightgreen'>");
         out.print("<td>아이디</td><td>비밀번호</td><td>이름</td><td>이메일</td><td>가입일</td><td>삭제</td>");
