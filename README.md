@@ -601,3 +601,25 @@ public class ViewServlet extends HttpServlet {
 
 
 
+-------
+# 8.5 ServletContext와 ServletConfig 사용법
+
+#### 8.5.1 ServletContext클래스
+
+- ServletContext 클래스는 톰캣 컨테이너 실해시 각 컨텍스트(웹 애플리케이션)마다 한 개의 ServletContext객체를 생성합니다.그리고 톰캣 컨테이너가 종료하면 ServletContext 객체 역시 소멸됩니다.ServletContext 객체는 웹애플리케이션이 실해되면서 애플리케이션 전체의 공통 자원이나 정보를 미리 바인딩해서 서블릿들이 공유하여 사용한다.
+- ServletContext 클래스의 특징은 다음과 같다
+  - Javax.servlet.ServletContext로 정의되어 있다.
+  - 서블릿과 컨테이너 간의 연동을 위해 사용합니다.
+  - 컨텍스트(웹 애플리케이션)마다 하나의 ServletContext가 생성됨
+  - 서블릿끼리 자원(데이터)을 공유하는 데 사용한다.
+  - 컨테이너 실행 시 생성되고 컨테이너 종료 시 소멸된다.
+- ServletContext가 제공하는 기능
+  - 서블릿에서 파일 접근 기능
+  - 자원 바인딩 기능
+  - 로그 파일 기능
+  - 컨텍스트에서 제공하는 설정 정보 제공 기능
+
+**아래 그림은 톰캣 컨테이너를 실행할 때 각 애플리케이션에서 생성되는 ServletContext와 ServletConfig 객체를 나타내었습니다. ServletContext는 컨텍스트당 생성되는 반면에 ServletConfig는 각 서블릿에 대해 생성된다.**
+
+![스크린샷 2019-08-28 오후 7.23.07](/Users/janghyeonjun/Desktop/스크린샷 2019-08-28 오후 7.23.07.png)
+
