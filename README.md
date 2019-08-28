@@ -502,5 +502,102 @@ dispatch를 이용한 포워딩 과정이 redirect방법과 다른 점은 클라
 
 **서블릿에서 다른 서블릿으로 포워딩할 때 GET방식으로 데이터를 전달하는 방법을 알아봤다. 전달하는 데이터 양이 적을 때는 이 방법이 편리하다. 그러나 서블릿에서 조회한 대량의 상품 정보를 JSP로 전달할 때는 GET방식이 불편하다. 따라서 서블릿에서 다른 서블릿 또 JSP로 대량의 데이터를 공유하거나 전달하고 싶을 때는 바인딩(binding) 기능을 사용한다.**
 
+#### 8.4.3 두 서블릿 간 회원 정보 조회 바인딩 실습
+
+이번에는 DB에서 조회된 회원 정보를 화면 기능을 담당하는 서블릿에 전달해서 웹 브라우저에 출력해 보겠다.
+
+MemberDAO.java , MemberVO.java는 7장에서 실습한걸로 대체!!!
+
+- MemberServlet.java
+- MemberServlet.java 클래스를 다음과 같이 작성합니다.첫 번째 서블릿에서 조회한 회원정보를 List에 저장한 후 다시 바인딩하여 두 번째 서블릿으로 전달한다.
+
+```java
+package sec10.ex01;
+
+import javax.servlet.RequestDispatcher;
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import java.io.IOException;
+import java.io.PrintWriter;
+import java.util.List;
+
+@WebServlet("/member")
+public class MemberServlet extends HttpServlet {
+    @Override
+    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        doHandle(req,resp);
+    }
+
+    @Override
+    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        doHandle(req,resp);
+    }
+    private void doHandle(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException{
+        req.setCharacterEncoding("utf-8");
+        resp.setContentType("text/html;charset=utf-8");
+        PrintWriter out = resp.getWriter();
+        MemberDAO dao = new MemberDAO();
+
+        List memberList = dao.listmembers();
+        req.setAttribute("membersList",memberList);//조회된 회원 정보를 ArrayList 객체에 저장한 후 request에 바인딩합니다.
+        /*
+         * 바인딩한 request를 viewMembers 서블릿으로 포워딩합니다.
+         */
+        RequestDispatcher dispatch = req.getRequestDispatcher("viewMembers");
+        dispatch.forward(req,resp);
+
+
+    }
+}
+
+```
+
+- ViewServlet.java 
+- ViewServlet 클래스를 다음과 같이 작성한다. getAttribute() 메서드를 이용해 첫 번째 서블릿에서 바인딩한 회원 정보를  List로 가져옵니다.
+
+```java
+package sec10.ex01;
+
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import java.io.IOException;
+import java.io.PrintWriter;
+import java.sql.Date;
+import java.util.List;
+
+@WebServlet("/viewMembers")
+public class ViewServlet extends HttpServlet {
+    @Override
+    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        req.setCharacterEncoding("utf-8");
+        resp.setContentType("text/html;charset=utf-8");
+        PrintWriter out = resp.getWriter();
+        List membersList = (List)req.getAttribute("membersList");//MemberServlet.java에서 바인딩해서 넝어온 request에서 회원정보를 가져옵니다.
+        out.print("<html><body>");
+        out.print("<table border=1><tr align='center' bgcolor='lightgreen'>");
+        out.print("<td>아이디</td><td>비밀번호</td><td>이름</td><td>이메일</td><td>가입일</td><td>삭제</td>");
+        for(int i= 0 ;i<membersList.size();i++){
+            MemberVO memberVO = (MemberVO)membersList.get(i);
+            String id = memberVO.getId();
+            String passwd = memberVO.getPwd();
+            String name = memberVO.getName();
+            String email = memberVO.getEmail();
+            Date joinDate = memberVO.getJoinDate();
+            out.print("<tr><td>"+id+"</td><td>"+passwd+"</td><td>"+name+"</td><td>"+email+"</td><td>"+joinDate+"</td><td>"
+            +"<a href='member3?command=delMember&id"+id+"'>삭제</a></td></tr>");
+        }
+        out.print("</table></body></html>");
+        out.print("<a href='/memberForm.html'>새 회원 등록하기</a>");
+    }
+}
+
+```
+
 
 
