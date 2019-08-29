@@ -623,3 +623,77 @@ public class ViewServlet extends HttpServlet {
 
 ![스크린샷 2019-08-28 오후 7.23.07](/Users/janghyeonjun/Desktop/스크린샷 2019-08-28 오후 7.23.07.png)
 
+
+ServletContext에서 제공하는 여러 가지 메서드
+
+| 메서드                                      | 기능                                                         |
+| ------------------------------------------- | ------------------------------------------------------------ |
+| getAttribute(String name)                   | - 주어진 name을 이용해 바인딩된 value를 가져옵니다.<br>- name이 존재하지 않으면 null을 반환한다. |
+| getAttributeNames()                         | - 바인딩된 속성들의 name을 반환합니다.                       |
+| getContext(String uripath)                  | 지정한 uripath에 해당되는 객체를 반환합니다.                 |
+| getInitParameter(String name)               | - name에 해당되는 매개변수의 초기화 값을 반환한다.<br>- name에 해당되는 매개변수가 존재하지 않으면 null을 반환한다. |
+| getInitParameterNames()                     | - 컨텍스트의 초기화 관련 매개변수들의 이름들을 String 객체가 저장된 Enumeration 타입으로 반환한다.<br>- 매개변수가 존재하지 않으면 null을 반환한다. |
+| getMajorVersion()                           | - 서블릿 컨테이너가 지원하는 주요 서블릿 API버전을 반환한다. |
+| getRealPath(String path)                    | - 지정한 path에 해당되는 실제 경로를 반환한다.               |
+| getResource(String path)                    | - 지정한 path에 해당되는 Resource를 반환한다.                |
+| getServletContextName()                     | - 현재 서블릿이 실행되고 있는 서블릿 컨테이너의 이름과 버전을 반환한다. |
+| getServletContextName()                     | - 해당 애플리케이션의 배치관리자가 지정한 ServletContext에 대한 해당 웹 애플리케이션의 이름을 반환한다. |
+| log(String msg)                             | - 로그 파일에 로그를 기록한다.                               |
+| removeAttribute(String name)                | - 해당 name으로 ServletContext에 바인딩된 객체를 제거한다.   |
+| setAttribute(String name,Object object)     | - 해당 name으로 객체를 ServletContext에 바인딩한다.          |
+| setInitParameter(String name, String value) | - 주어진 name으로 value를 컨텍스트 초기화 매개변수로 설정한다. |
+
+
+
+#### 8.5.2 ServletContext 바인딩 기능
+
+1. GetServletContext, SetServletContext 클래스 파일을 준비한다.
+
+2. getServletContext() 메서드를 이용해 ServletContext 객체에 접근한 다음 ArrayList에 이름과 나이를 저장한 후 다시 ServletContext 객체에  setAttribute() 메서드를 이용해 바인딩 한다.
+
+   SetServletContext.java
+
+   ```java
+   @WebServlet("/cset")
+   public class SetServletContext extends HttpServlet {
+       @Override
+       protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+           resp.setContentType("text/html;charset=utf-8");
+           PrintWriter out = resp.getWriter();
+           ServletContext context = getServletContext(); // ServletContext 객체를 가져온다.
+           List member = new ArrayList();
+           member.add("이순신");
+           member.add(30);
+           context.setAttribute("member",member);//ServletContext 객체에 데이터를 바인딩 한다.
+           out.print("<html><body>");
+           out.print("이순신과 30 설정");
+           out.print("</body></html>");
+       }
+   }
+   ```
+
+   
+
+  3.GetServletContext 클래스를 작성한다. getServletContext()메서드를 이용해 ServletContext 객체에 접근한다. 그리고 getAttribute() 메서드를 이요해 다른 서블릿에서 바인딩한 ArrayList를 가져와 회원 정보를 출력한다.
+
+```java
+@WebServlet("/cget")
+public class GetServletContext extends HttpServlet {
+    @Override
+    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        resp.setContentType("text/html;charset=utf-8");
+        PrintWriter out = resp.getWriter();
+        ServletContext context = getServletContext();//ServletContext객체를 가져온다.
+        List member = (ArrayList)context.getAttribute("member");
+        String name = (String)member.get(0);
+        int age = (Integer) member.get(1); //아마 자동 언박싱 되서 age변수에 들어갈듯??
+
+        out.print("<html><body>");
+        out.print("name:"+name+", age:"+age);
+        out.print("</body></html>");
+    }
+}
+```
+
+
+
