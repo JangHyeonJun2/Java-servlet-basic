@@ -10,7 +10,9 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.List;
-
+/*
+ * cset.java부분
+ */
 @WebServlet("/cset")
 public class SetServletContext extends HttpServlet {
     @Override
