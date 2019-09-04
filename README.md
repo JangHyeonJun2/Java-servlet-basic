@@ -696,4 +696,100 @@ public class GetServletContext extends HttpServlet {
 ```
 
 
+#### 8.5.3 ServletContext의 매개변수 설정 기능
+
+대부분의 웹 애플리케이션에서 메뉴는 공통으로 사용하는 기능이다. 따라서 web.xml에 설정해 놓고 프로그램 시작 시 초기화 할 때 가져와서 사용하면 편리하다.그러면 새로운 메뉴 항목이 생성되거나 기존 메뉴 항목을 추가, 삭제할 때도 쉽게 수정할 수 있다.
+
+1. ContextParamServlet 클래스 파일과 web.xml파일을 준비한다.
+
+2. Web.xml에 메뉴 항목을 설정. <context-param> 태그 안에 <param-name>태그와 <param-value>태그를 이용해 메뉴에 대한 하위 메뉴 항목을 설정한다.
+
+   ```
+   
+   ```
+
+   ```java
+   <context-param>
+       <param-name>menu_member</param-name>
+       <param-value>회원등록 회원조회 회원수정</param-value>
+   </context-param>
+   
+   <context-param>
+       <param-name>menu_order</param-name>
+       <param-value>주문조회 주문등록 주문수정 주문취소</param-value>
+   </context-param>
+   
+   <context-param>
+       <param-name>menu_goods</param-name>
+       <param-value>상품조회 상품등록 상품수정 상품삭제</param-value>
+   </context-param>
+   ```
+
+3. ContextParamServlet클래스를 다음과 같이 작성한다. getServletContext()메서드로 ServletContext 객체에 접근한다. 그리고 getInitParameter() 메서드의 인자로 각각의 메뉴 이름을 전달한 후 메뉴 항목들을 가져와 이를 브라우저로 출력한다.
+
+```java
+package sec11.ex02;
+
+import javax.servlet.ServletContext;
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import java.io.IOException;
+import java.io.PrintWriter;
+
+@WebServlet("/initMenu")
+public class ContextParamServlet extends HttpServlet {
+    @Override
+    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        req.setCharacterEncoding("utf-8");
+        resp.setContentType("text/html;charset=utf-8");
+        PrintWriter out = resp.getWriter();
+        ServletContext context = getServletContext(); // ServletContext객체를 가져온다
+
+        /*
+         * web.xml의 <param-name>태그의 이름으로 <param-value> 태그의 값인 메뉴 이름들을 받아온다.
+         */
+        String menu_member = context.getInitParameter("menu_member");
+        String menu_order = context.getInitParameter("menu_order");
+        String menu_goods = context.getInitParameter("menu_goods");
+
+        out.print("<html><body>");
+        out.print("<table border=1 cellspacing=0><tr>메뉴이름</tr>");
+        out.print("<tr><td>"+menu_member+"</td></tr>");
+        out.print("<tr><td>"+menu_order+"</td></tr>");
+        out.print("<tr><td>"+menu_goods+"</td></tr>");
+        out.print("</table></body></html>");
+
+    }
+}
+
+```
+
+#### 8.5.5 ServletConfig
+
+**ServletConfig는 각 Servlet 객체에 대해 생성된다. 서블릿 API 계층 구조를 보면 ServletConfig 인터페이스를 GenericServlet 클래스가 실제로 구현 하고 있다.**
+
+**ServletConfig에서 제공하는 여러 가지 메서드를 이용해 서블릿에 관련된 기능을 사용할 수 있다. 대표적인 기능이 앞에서 실습한 ServletContext 객체를 가져오는 기능이다.**
+
+**ServletConfig는 javax.servlet 패키지에 인터페이스로 선언되어 있으며, 서블릿에 대한 여러가지 기능을 제공한다. 각 서블릿에서만 접근할 수 있으며 공유는 불가능 합니다. ServletConfig는 서블릿과 동일하게 생성되고 서블릿이 소멸되면 같이 소멸된다.**
+
+ServletConfig가 제공하는 기능은 다음과 같다.
+
+- ServletContext 객체를 얻는 기능
+- 서블릿에 대한 초기화 작업 기능
+
+이번에는 서블릿에서 사용할 설정 정보를 익어 들여와 초기화하는 기능을 알아보겠다. 서블릿에서 초기화하는 방법으로는 @WebServlet 애너테이션을 이용하는 방법과 web.xml에 설정하는 방법이 있다.
+
+#### 8.5.6 애너테이션을 이용한 서블릿 설정
+
+| 요소          | 설명                                                     |
+| ------------- | -------------------------------------------------------- |
+| urlPatterns   | 웹 브라우저에서 서블릿 요청 시 사용하는 매핑 이름        |
+| name          | 서블릿 이름                                              |
+| loadOnStartup | 컨테이너 실행시 서블릿이 로드되는 순서 지정              |
+| initParams    | @WebInitParam 애너테이션 이용해 매개변수를 추가하는 기능 |
+| description   | 서블릿에 대한 설명                                       |
+
 
