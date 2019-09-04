@@ -3,6 +3,24 @@
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_4_0.xsd"
          version="4.0">
+    <servlet>
+        <servlet-name>InitParamServlet2</servlet-name>
+        <servlet-class>sec12.ex01.InitParamServlet2</servlet-class>
+        <init-param>
+            <param-name>email</param-name>
+            <param-value>jang@naver.com</param-value>
+        </init-param>
+        <init-param>
+            <param-name>tel</param-name>
+            <param-value>010-2222-3333</param-value>
+        </init-param>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>InitParamServlet2</servlet-name>
+        <url-pattern>/sinit3</url-pattern>
+    </servlet-mapping>
+
+
     <context-param>
         <param-name>menu_member</param-name>
         <param-value>회원등록 회원조회 회원수정</param-value>
