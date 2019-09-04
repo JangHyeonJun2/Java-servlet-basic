@@ -25,7 +25,7 @@ public class ContextFileServlet extends HttpServlet {
         String menu_goods = null;
 
         while ((menu = buffer.readLine()) !=null){
-            StringTokenizer tokens = new StringTokenizer(menu,",");//콤마로 구분해서 문자열을 구분한다.
+            StringTokenizer tokens = new StringTokenizer(menu,",");//콤마로 구분해서 문자열을 구분한다.출력 기능
             menu_member = tokens.nextToken();
             menu_order = tokens.nextToken();
             menu_goods = tokens.nextToken();
