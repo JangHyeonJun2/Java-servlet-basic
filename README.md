@@ -793,3 +793,71 @@ ServletConfig가 제공하는 기능은 다음과 같다.
 | description   | 서블릿에 대한 설명                                       |
 
 
+--------
+#### 8.6 load-on-startup
+
+**서블릿은 브라우저에서 최초 요청 시 init()메서드를 실행한 후 메모리에 로드되어 기능을 수행합니다.따라서 최초 요청에 대해서는 실행 시간이 길어질 수밖에 없다. 이런 단점을 보완하기 위해 이용하는 기능이 load-on-startup이다.**
+
+- 톰캣 컨테이너가 실행되면서 미리 서블릿을 실행한다.
+- 지정한 숫자가 0보다 크면 톰캣 컨테이너가 실행되면서 서블릿이 초기화 된다.
+- 지정한 숫자는 우선순위를 의미하며 작은 숫자부터 먼저 초기화된다.
+
+#### 8.6.1 애너테이션을 이용하는 방법
+
+```java
+ package sec12.ex02;
+
+import javax.servlet.ServletConfig;
+import javax.servlet.ServletContext;
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import java.io.IOException;
+import java.io.PrintWriter;
+
+@WebServlet(name = "loadConfig", urlPatterns = {"/loadConfig"},loadOnStartup = 1)//loadOnStartup 속성을 추가하고 우선수위를 1로 설정한다.
+public class loadConfig extends HttpServlet {
+    private ServletContext context;//멤버변수로 선언한다.
+
+    @Override
+    public void init(ServletConfig config) throws ServletException {
+        System.out.println("LoadAppConfig");
+        context = config.getServletContext();//init() 메서드에서 ServletContext 객체를 얻는다.
+        String menu_member = context.getInitParameter("menu_member");
+        String menu_order = context.getInitParameter("menu_order");
+        String menu_goods = context.getInitParameter("menu_goods");
+
+        context.setAttribute("menu_member",menu_member);
+        context.setAttribute("menu_order",menu_order);
+        context.setAttribute("menu_goods",menu_goods);
+
+    }
+
+    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        request.setCharacterEncoding("utf-8");
+        response.setContentType("text/html;charset=utf-8");
+        PrintWriter out = response.getWriter();
+
+        String menu_member = (String)context.getAttribute("menu_member");
+        String menu_order = (String)context.getAttribute("menu_order");
+        String menu_goods = (String)context.getAttribute("menu_goods");
+
+        out.print("<html><body>");
+        out.print("<table border=1 cellspacing=0><tr>메뉴 이름</tr>");
+        out.print("<tr><td>"+menu_member+"</td></tr>");
+        out.print("<tr><td>"+menu_order+"</td></tr>");
+        out.print("<tr><td>"+menu_goods+"</td></tr>");
+        out.print("</table></body></html>");
+
+    }
+}
+
+```
+
+위에 코드에서 우선순위는 양의 정수로 지정하며 숫자가 작으면 우선순위가 높으므로 먼저 실행한다.
+
+톰캣 실행 시 init() 메서드를 호출하면 getInitParameter() 메서드를 이용해 web.xml의 메뉴 정보를 읽어 들인 후 다시 ServletContext 객체에 setAttribute() 메서드로 바인딩한다. 브라우저에서 요청하면 web.xml이 아니라 ServletContext 객체에서 메뉴 항목을 가져온 후 출력하기 때문에 파일에서 읽어 들여와 출력하는 것보다 빨리 출력할 수 있다.
+
+
