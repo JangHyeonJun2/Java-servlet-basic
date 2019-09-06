@@ -9,7 +9,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.io.PrintWriter;
-
+/*
+ * load-on-startup 관한 내용 문서화 시켰으니 참고!
+ */
 @WebServlet(name = "loadConfig", urlPatterns = {"/loadConfig"},loadOnStartup = 1)//loadOnStartup 속성을 추가하고 우선수위를 1로 설정한다.
 public class loadConfig extends HttpServlet {
     private ServletContext context;//멤버변수로 선언한다.
